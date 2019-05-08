@@ -8,13 +8,36 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
+class ViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
-
-
+    
+    func presentAlert() {
+        
+        let alert = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
+            
+            alert.addTextField { (UITextField) in
+                UITextField.placeholder = "Placeholder text"
+            }
+        
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in
+            print("Cancelled")
+        }))
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+            
+            let userInput = alert.textFields?.first?.text
+            
+        }))
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
 }
+
+
 
